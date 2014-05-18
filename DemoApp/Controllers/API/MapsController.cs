@@ -1,28 +1,31 @@
-﻿using DemoRealtApp.DAL.Context;
-using DemoRealtApp.DAL.Models;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DemoRealtApp.DAL.Context;
+using DemoRealtApp.DAL.Models;
 using FrontMaps.Extensions;
+using FrontMaps.Filters;
 using FrontMaps.Models;
 
-
-namespace DemoRealtApp.Controllers
+namespace DemoApp.Controllers.API
 {
-    public class MapsApiController : ApiController
+    public class MapsController : ApiController
     {
-        private MapsContext db = new MapsContext();
+        private readonly MapsContext db = new MapsContext();
 
         // GET api/MapsApi
- 
-        public IQueryable<GeoObject> GetGeoObjects([FromUri] LatLng left)
+
+        /*public IHttpActionResult GetGeoObjects([FromUri] LatLng left, [FromUri] LatLng right)
         {
-            return db.GeoObjects.QueryGeoData();
-        }
+            return db
+                .GeoObjects
+                .FilterBy(new BoundsFilter(), new BoundsFilterArgs(left, right))
+                .QueryGeoData();
+        }*/
 
         // GET api/MapsApi/5
         [ResponseType(typeof(GeoObject))]

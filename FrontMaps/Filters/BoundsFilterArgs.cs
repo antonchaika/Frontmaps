@@ -9,9 +9,9 @@ namespace FrontMaps.Filters
 {
     public class BoundsFilterArgs : IFilterArgs
     {
-        public BoundsFilterArgs(LatLng leftTop, LatLng rightBottom)
+        public BoundsFilterArgs(LatLng northEast, LatLng southWest)
         {
-            Params = new Dictionary<string, object> {{"leftTop", leftTop}, {"rightBottom", rightBottom}};
+            Params = new Dictionary<string, object> { { "northEast", northEast }, { "southWest", southWest } };
         }
 
         public Dictionary<string, object> Params { get; set; }

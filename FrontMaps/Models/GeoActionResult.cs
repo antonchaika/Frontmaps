@@ -13,9 +13,9 @@ namespace FrontMaps.Models
     {
         private readonly JsonConverter jsonConverter = new JsonConverter();
 
-        public GeoActionResult(IEnumerable<IGeoEntity> data)
+        public GeoActionResult(object data)
         {
-            this.Data = new CollectionContext<IGeoEntity>(data);
+            this.Data = data;
         }
 
         public override void ExecuteResult(ControllerContext context)

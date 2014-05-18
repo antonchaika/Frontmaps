@@ -15,15 +15,15 @@ namespace FrontMaps.Filters
 
         public override IQueryable<T> ApplyFilter<T>(IQueryable<T> query, IFilterArgs args)
         {
-            var leftTop = args.Params["leftTop"] as LatLng;
-            var rightBottom = args.Params["rightBottom"] as LatLng;
+            var northEast = args.Params["northEast"] as LatLng;
+            var southWest = args.Params["southWest"] as LatLng;
 
-            if (leftTop != null && rightBottom != null)
-            query = query.Where(x => 
-                x.Latitude + bounds > rightBottom.Latitude && 
-                x.Latitude - bounds < leftTop.Latitude &&
-                Math.Abs(x.Longitude) + bounds > Math.Abs(leftTop.Longitude) &&
-                Math.Abs(x.Longitude) - bounds < Math.Abs(rightBottom.Longitude));
+            if (northEast != null && southWest != null)
+            query = query.Where(x =>
+                x.Latitude + bounds > southWest.Latitude &&
+                x.Latitude - bounds < northEast.Latitude &&
+                Math.Abs(x.Longitude) + bounds > Math.Abs(northEast.Longitude) &&
+                Math.Abs(x.Longitude) - bounds < Math.Abs(southWest.Longitude));
 
             return query;
         }
