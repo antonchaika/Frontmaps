@@ -44,3 +44,7 @@ input[type="checkbox"].input-validation-error {
 .jumbotron #map {
     height: 500px;
 }
+
+.jumbotron .btn-primary {
+    margin-top: 40px;
+}

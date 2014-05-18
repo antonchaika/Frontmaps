@@ -10,25 +10,12 @@
     <h1>FrontMaps</h1>
     <p class="lead">FrontMaps demo to show you some benefits of FrontMaps library.</p>
     <div id="map"></div>
+    <a class="btn btn-primary btn-small" data-toggle="modal" href="#addmeModal"><i class="icon-plus-sign icon-white"></i> Add CityObject to the map!</a>
 </div>
 
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        /*var map = new L.Map('#map');
-        var url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-        var copyright = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
-        var tileLayer = new L.TileLayer(url, { maxZoom: 20, attribution: copyright });
-        var startPosition = new L.LatLng(53.901086, 27.548969);
-        map.on('load', function (e) {
-            getGeoObjects(e.target.getBounds());
-        });
-        map.setView(startPosition, 19).addLayer(tileLayer);
-        map.on('moveend', function (e) {
-            getGeoObjects(e.target.getBounds());
-        });*/
-
-
+    /*$(document).ready(function () {
         var map = new L.Map('map');
         var markersLayer = new L.LayerGroup();
 
@@ -43,9 +30,9 @@
 
             loadMarkers();
 
-            /*map.on('drag', function (e) {
+            map.on('drag', function (e) {
                 markersLayer.clearLayers();
-            });*/
+            });
 
             map.on('dragend', function (e) {
                 loadMarkers();
@@ -74,7 +61,7 @@
 
         }
 
-    });
+    });*/
 
 </script>
 
@@ -121,12 +108,12 @@
 
         $(document).ready(function() {
             $.ajaxSetup({ cache: false });
-            $('#map').css('height', ($(window).height() - 40));
-            getUsers();
+            //$('#map').css('height', ($(window).height() - 40));
+            getObjects();
         });
 
         $(window).resize(function() {
-            $('#map').css('height', ($(window).height() - 40));
+            //$('#map').css('height', ($(window).height() - 40));
         }).resize();
 
         function geoLocate() {
@@ -145,8 +132,9 @@
             map.removeEventListener('click', onMapClick);
         }
 
-        function getUsers() {
-            $.getJSON("get_users.php", function(data) {
+        function getObjects() {
+            $.getJSON("/maps/cityobjects", function (data) {
+                data = data.Items;
                 for (var i = 0; i < data.length; i++) {
                     var location = new L.LatLng(data[i].lat, data[i].lng);
                     var name = data[i].name;
@@ -200,7 +188,7 @@
                 success: function() {
                     cancelRegistration();
                     users.clearLayers();
-                    getUsers();
+                    getObjects();
                     $("#loading-mask").hide();
                     $("#loading").hide();
                     $('#insertSuccessModal').modal('show');
@@ -230,7 +218,7 @@
                     if (data > 0) {
                         $('#removemeModal').modal('hide');
                         users.clearLayers();
-                        getUsers();
+                        getObjects();
                         $('#removeSuccessModal').modal('show');
                     } else {
                         alert("Incorrect email or token. Please try again.");

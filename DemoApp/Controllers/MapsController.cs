@@ -138,10 +138,10 @@ namespace DemoApp.Controllers
             return new GeoActionResult(query);
         }
 
-        [System.Web.Mvc.HttpPost]
+        /*[System.Web.Mvc.HttpPost]
         public JsonResult AddCityObject([FromBody] GeoObject cityObject)
         {
             
-        }
+        }*/
     }
 }
