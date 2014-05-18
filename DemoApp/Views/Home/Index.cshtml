@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style type='text/javascript'>
+    .BingMap { width: 600px; height: 400px; border: solid 1px black; }
+</style>
+
+<div class="jumbotron">
+    <h1>FrontMaps</h1>
+    <p class="lead">FrontMaps demo to show you some benefits of FrontMaps library.</p>
+    <div id="map"></div>
+</div>
+
+<script type="text/javascript" language="javascript">
+
+    $(document).ready(function () {
+        var map = new L.Map('#map');
+        var url = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+        var copyright = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
+        var tileLayer = new L.TileLayer(url, { maxZoom: 20, attribution: copyright });
+        var startPosition = new L.LatLng(53.901086, 27.548969);
+        map.on('load', function (e) {
+            requestUpdatedCadastre(e.target.getBounds());
+        });
+        map.setView(startPosition, 19).addLayer(tileLayer);
+        map.on('moveend', function (e) {
+            requestUpdatedCadastre(e.target.getBounds());
+        });
+    });
+
+    function requestUpdatedCadastre(bounds) {
+        $.ajax(
+          {
+              type: 'POST',
+              url: '/api/MapsApi',
+              dataType: 'json',
+              data: JSON.stringify(bounds),
+              contentType: 'application/json; charset=utf-8',
+              success: function (result) {
+                  parseResponseCadastre(result);
+              },
+              error: function (req, status, error) {
+                  alert('Unable to get cadastral data');
+              }
+          });
+    }
+
+    function parseResponseCadastre(data) {
+        if (cadastralLayer != undefined) {
+            map.removeLayer(cadastralLayer);
+        }
+        cadastralLayer = new L.GeoJSON();
+        cadastralLayer.on('featureparse', function (e) {
+            e.layer.setStyle({ color: '#003300', weight: 2, fill: true, fillColor: '#009933' });
+        });
+        cadastralLayer.addGeoJSON(data);
+        map.addLayer(cadastralLayer);
+    }
+    
+    /*window.onload = function () {
+        var map = L.map('map').setView([53.901086, 27.548969], 10);
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([53.901086, 27.548969]).addTo(map)
+            .bindPopup('Science Hall<br>Where the GISC was born.');
+    };*/
+    
+</script>
