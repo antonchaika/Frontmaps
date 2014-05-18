@@ -9,6 +9,7 @@ using DemoRealtApp.DAL.Models;
 using FrontMaps.Extensions;
 using FrontMaps.Filters;
 using FrontMaps.Models;
+using FrontMaps.Utils;
 
 namespace DemoApp.Controllers
 {
@@ -138,10 +139,16 @@ namespace DemoApp.Controllers
             return new GeoActionResult(query);
         }
 
-        /*[System.Web.Mvc.HttpPost]
-        public JsonResult AddCityObject([FromBody] GeoObject cityObject)
+        [System.Web.Mvc.HttpPost]
+        public JsonResult AddCityObject([FromBody] string json)
         {
-            
-        }*/
+            var converter = new JsonConverter();
+            var cityObject = converter.Deserialize<GeoObject>(json);
+            cityObject.ID = Guid.NewGuid();
+            db.GeoObjects.Add(cityObject);
+            db.SaveChanges();
+            //throw new Exception("123");
+            return Json(new {success = true}, JsonRequestBehavior.AllowGet);
+        }
     }
 }

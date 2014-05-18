@@ -14,7 +14,7 @@ namespace FrontMaps.Utils
             return JsonConvert.SerializeObject(obj);
         }
 
-        public virtual object Deserialize<T>(string json)
+        public virtual T Deserialize<T>(string json)
         {
             return JsonConvert.DeserializeObject<T>(json);
         }

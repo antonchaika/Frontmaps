@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace DemoRealtApp
+namespace DemoApp
 {
     public class BundleConfig
     {
@@ -20,11 +19,11 @@ namespace DemoRealtApp
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/respond.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").IncludeDirectory(
-                      "~/Content/","*.css"));
+                      "~/Content/", "*.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/leaflet").IncludeDirectory(
                         "~/Scripts/leaflet/", "leaflet.*"));

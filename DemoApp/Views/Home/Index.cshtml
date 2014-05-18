@@ -2,254 +2,240 @@
     ViewBag.Title = "Home Page";
 }
 
-<style type='text/javascript'>
-    .BingMap { width: 600px; height: 400px; border: solid 1px black; }
-</style>
+<div class="modal hide fade" id="addmeModal">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Add me to the map!</h3>
+    </div>
+    <div class="modal-body">
+        <p>Click on the Go! button below to get started.</p>
+        <p>Navigate to your desired location and click on the map to drop a marker and submit your information.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" onclick="$('#addmeModal').modal('hide'); initRegistration(); return false;" class="btn btn-primary">Добавить!</a>
+    </div>
+</div>
+
+<div class="modal hide fade" id="insertErrorModal">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Error!</h3>
+    </div>
+    <div class="modal-body">
+        
+    </div>
+</div>
+
+<div class="modal hide fade" id="insertSuccessModal">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Success!</h3>
+    </div>
+    <div class="modal-body">
+        <p>Thanks for joining the Leaflet Users Map!</p>
+        <p>You should receive an email shortly with instructions on how to edit your information.</p>
+    </div>
+</div>
 
 <div class="jumbotron">
     <h1>FrontMaps</h1>
     <p class="lead">FrontMaps demo to show you some benefits of FrontMaps library.</p>
     <div id="map"></div>
-    <a class="btn btn-primary btn-small" data-toggle="modal" href="#addmeModal"><i class="icon-plus-sign icon-white"></i> Add CityObject to the map!</a>
+    <div id="loading-mask" class="modal-backdrop" style="display:none;"></div>
+    <div id="loading" style="display:none;">
+        <div class="loading-indicator">
+            <img src="/Content/img/ajax-loader.gif">
+        </div>
+    </div>
+    <a class="btn btn-primary btn-small add-button" data-toggle="modal" href="#addmeModal"><i class="icon-plus-sign icon-white"></i> Add CityObject to the map!</a>
 </div>
 
 <script type="text/javascript">
+    var cityObject = {}
+    var map, newObject, objects, mapquest, firstLoad;
+    firstLoad = true;
+    objects = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true });
+    newObject = new L.LayerGroup();
 
-    /*$(document).ready(function () {
-        var map = new L.Map('map');
-        var markersLayer = new L.LayerGroup();
-
-        var cloudmadeUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-            cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-            cloudmade = new L.TileLayer(cloudmadeUrl, { maxZoom: 18, attribution: cloudmadeAttribution });
-
-        map.setView(new L.LatLng(53.901086, 27.548969), 15).addLayer(cloudmade);
-
-
-        $(function () {
-
-            loadMarkers();
-
-            map.on('drag', function (e) {
-                markersLayer.clearLayers();
-            });
-
-            map.on('dragend', function (e) {
-                loadMarkers();
-            });
-
-
-        });
-
-        function loadMarkers() {
-
-            markersLayer.clearLayers();
-            var bounds = map.getBounds();
-
-            bounds = 'leftTop=' + bounds._northEast.lat + ';' + bounds._northEast.lng + '&' + 'rightBottom=' + bounds._southWest.lat + ';' + bounds._southWest.lng;
-
-            $.get("/maps/cityobjects?" + bounds, function (data) {
-
-                $(data.Items).each(function () {
-
-                    var marker = new L.Marker(new L.LatLng(this.lat, this.lng));
-                    markersLayer.addLayer(marker);
-                });
-
-                map.addLayer(markersLayer);
-            }, 'json');
-
-        }
-
-    });*/
-
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        var map, newUser, users, mapquest, firstLoad;
-
-        firstLoad = true;
-
-        //users = new L.FeatureGroup();
-        users = new L.MarkerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true });
-        newUser = new L.LayerGroup();
-
-        mapquest = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-            maxZoom: 18,
-            subdomains: ["otile1", "otile2", "otile3", "otile4"],
-            attribution: 'Basemap tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
-        });
-
-        map = new L.Map('map', {
-            center: new L.LatLng(53.901086, 27.548969),
-            zoom: 10,
-            layers: [mapquest, users, newUser]
-        });
-
-        // GeoLocation Control
-        function geoLocate() {
-            map.locate({ setView: true, maxZoom: 17 });
-        }
-
-        var geolocControl = new L.control({
-            position: 'topright'
-        });
-        geolocControl.onAdd = function(map) {
-            var div = L.DomUtil.create('div', 'leaflet-control-zoom leaflet-control');
-            div.innerHTML = '<a class="leaflet-control-geoloc" href="#" onclick="geoLocate(); return false;" title="My location"></a>';
-            return div;
-        };
-
-        map.addControl(geolocControl);
-        map.addControl(new L.Control.Scale());
-
-        //map.locate({setView: true, maxZoom: 3});
-
-        $(document).ready(function() {
-            $.ajaxSetup({ cache: false });
-            //$('#map').css('height', ($(window).height() - 40));
-            getObjects();
-        });
-
-        $(window).resize(function() {
-            //$('#map').css('height', ($(window).height() - 40));
-        }).resize();
-
-        function geoLocate() {
-            map.locate({ setView: true, maxZoom: 17 });
-        }
-
-        function initRegistration() {
-            map.addEventListener('click', onMapClick);
-            $('#map').css('cursor', 'crosshair');
-            return false;
-        }
-
-        function cancelRegistration() {
-            newUser.clearLayers();
-            $('#map').css('cursor', '');
-            map.removeEventListener('click', onMapClick);
-        }
-
-        function getObjects() {
-            $.getJSON("/maps/cityobjects", function (data) {
-                data = data.Items;
-                for (var i = 0; i < data.length; i++) {
-                    var location = new L.LatLng(data[i].lat, data[i].lng);
-                    var name = data[i].name;
-                    var website = data[i].website;
-                    if (data[i].website.length > 7) {
-                        var title = "<div style='font-size: 18px; color: #0078A8;'><a href='" + data[i].website + "' target='_blank'>" + data[i].name + "</a></div>";
-                    } else {
-                        var title = "<div style='font-size: 18px; color: #0078A8;'>" + data[i].name + "</div>";
-                    }
-                    if (data[i].city.length > 0) {
-                        var city = "<div style='font-size: 14px;'>" + data[i].city + "</div>";
-                    } else {
-                        var city = "";
-                    }
-                    var marker = new L.Marker(location, {
-                        title: name
-                    });
-                    marker.bindPopup("<div style='text-align: center; margin-left: auto; margin-right: auto;'>" + title + city + "</div>", { maxWidth: '400' });
-                    users.addLayer(marker);
-                }
-            }).complete(function() {
-                if (firstLoad == true) {
-                    map.fitBounds(users.getBounds());
-                    firstLoad = false;
-                };
-            });
-        }
-
-        function insertUser() {
-            $("#loading-mask").show();
-            $("#loading").show();
-            var name = $("#name").val();
-            var email = $("#email").val();
-            var website = $("#website").val();
-            var city = $("#city").val();
-            var lat = $("#lat").val();
-            var lng = $("#lng").val();
-            if (name.length == 0) {
-                alert("Name is required!");
-                return false;
-            }
-            if (email.length == 0) {
-                alert("Email is required!");
-                return false;
-            }
-            var dataString = 'name=' + name + '&email=' + email + '&website=' + website + '&city=' + city + '&lat=' + lat + '&lng=' + lng;
-            $.ajax({
-                type: "POST",
-                url: "insert_user.php",
-                data: dataString,
-                success: function() {
-                    cancelRegistration();
-                    users.clearLayers();
-                    getObjects();
-                    $("#loading-mask").hide();
-                    $("#loading").hide();
-                    $('#insertSuccessModal').modal('show');
-                }
-            });
-            return false;
-        }
-
-        function removeUser() {
-            var email = $("#email_remove").val();
-            var token = $("#token_remove").val();
-            if (email.length == 0) {
-                alert("Email is required!");
-                return false;
-            }
-            if (token.length == 0) {
-                alert("Token is required!");
-                return false;
-            }
-            var dataString = 'email=' + email + '&token=' + token;
-            $.ajax({
-                type: "POST",
-                url: "remove_user.php",
-                data: dataString,
-                success: function(data) {
-                    //console.log(data);
-                    if (data > 0) {
-                        $('#removemeModal').modal('hide');
-                        users.clearLayers();
-                        getObjects();
-                        $('#removeSuccessModal').modal('show');
-                    } else {
-                        alert("Incorrect email or token. Please try again.");
-                    }
-                }
-            });
-            return false;
-        }
-
-        function onMapClick(e) {
-            var markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-            var marker = new L.Marker(markerLocation);
-            newUser.clearLayers();
-            newUser.addLayer(marker);
-            var form = '<form id="inputform" enctype="multipart/form-data" class="well">' +
-                '<label><strong>Name:</strong> <i>marker title</i></label>' +
-                '<input type="text" class="span3" placeholder="Required" id="name" name="name" />' +
-                '<label><strong>Email:</strong> <i>never shared</i></label>' +
-                '<input type="text" class="span3" placeholder="Required" id="email" name="email" />' +
-                '<label><strong>City:</strong></label>' +
-                '<input type="text" class="span3" placeholder="Optional" id="city" name="city" />' +
-                '<label><strong>Website:</strong></label>' +
-                '<input type="text" class="span3" placeholder="Optional" id="website" name="website" value="http://" />' +
-                '<input style="display: none;" type="text" id="lat" name="lat" value="' + e.latlng.lat.toFixed(6) + '" />' +
-                '<input style="display: none;" type="text" id="lng" name="lng" value="' + e.latlng.lng.toFixed(6) + '" /><br><br>' +
-                '<div class="row-fluid">' +
-                '<div class="span6" style="text-align:center;"><button type="button" class="btn" onclick="cancelRegistration()">Cancel</button></div>' +
-                '<div class="span6" style="text-align:center;"><button type="button" class="btn btn-primary" onclick="insertUser()">Submit</button></div>' +
-                '</div>' +
-                '</form>';
-            marker.bindPopup(form).openPopup();
-        }
+    mapquest = new L.TileLayer("http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        subdomains: ["otile1", "otile2", "otile3", "otile4"],
+        attribution: 'Basemap tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
     });
+
+    map = new L.Map('map', {
+        center: new L.LatLng(53.901086, 27.548969),
+        zoom: 5,
+        layers: [mapquest]
+    });
+
+    // GeoLocation Control
+    function geoLocate() {
+        map.locate({ setView: true, maxZoom: 17 });
+    }
+
+    var geolocControl = new L.control({
+        position: 'topright'
+    });
+
+    geolocControl.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'leaflet-control-zoom leaflet-control');
+        div.innerHTML = '<a class="leaflet-control-geoloc" href="#" onclick="geoLocate(); return false;" title="My location"></a>';
+        return div;
+    };
+
+    map.addControl(geolocControl);
+    map.addControl(new L.Control.Scale());
+
+    //map.locate({setView: true, maxZoom: 3});
+
+    $(document).ready(function() {
+        $.ajaxSetup({ cache: false });
+        getObjects();
+    });
+
+    function initRegistration() {
+        map.addEventListener('click', onMapClick);
+        $('#map').css('cursor', 'crosshair');
+        return false;
+    }
+
+    function cancelRegistration() {
+        newObject.clearLayers();
+        $('#map').css('cursor', '');
+        map.removeEventListener('click', onMapClick);
+    }
+
+    function getObjects() {
+        $.getJSON("/maps/cityobjects", function(data) {
+            data = data.Items;
+            for (var i = 0; i < data.length; i++) {
+                var location = new L.LatLng(data[i].lat, data[i].lng);
+                var name = data[i].Title;
+                /*if (data[i].website.length > 7) {
+                    var title = "<div style='font-size: 18px; color: #0078A8;'><a href='" + data[i].website + "' target='_blank'>" + data[i].name + "</a></div>";
+                } else {
+                    var title = "<div style='font-size: 18px; color: #0078A8;'>" + data[i].name + "</div>";
+                }
+                if (data[i].city.length > 0) {
+                    var city = "<div style='font-size: 14px;'>" + data[i].city + "</div>";
+                } else {
+                    var city = "";
+                }*/
+                var marker = new L.Marker(location, {
+                    title: name
+                }).addTo(map);
+                //marker.bindPopup("<div style='text-align: center; margin-left: auto; margin-right: auto;'>" + name + "</div>", { maxWidth: '400' });
+                //objects.addLayer(marker);
+            }
+
+            //map.addLayer(objects);
+        }).complete(function() {
+            if (firstLoad == true) {
+                //map.fitBounds(objects.getBounds());
+                firstLoad = false;
+            };
+        });
+    }
+
+    function insertUser() {
+        $("#loading-mask").show();
+        $("#loading").show();
+        var name = $("#name").val();
+        var type = $("#city").val();
+        var lat = $("#lat").val();
+        var lng = $("#lng").val();
+        if (name.length == 0) {
+            alert("Name is required!");
+            return false;
+        }
+        if (email.length == 0) {
+            alert("Email is required!");
+            return false;
+        }
+
+        cityObject.Title = name;
+        cityObject.lat = lat;
+        cityObject.lng = lng;
+        cityObject.Type = type;
+
+        $.ajax({
+            type: "POST",
+            url: "/maps/addcityobject",
+            data: {json: JSON.stringify(cityObject)},
+            success: function() {
+                cancelRegistration();
+                objects.clearLayers();
+                getObjects();
+                $("#loading-mask").hide();
+                $("#loading").hide();
+                $('#insertSuccessModal').modal('show');
+            }/*,
+            error: function() {
+                cancelRegistration();
+                objects.clearLayers();
+                getObjects();
+                $("#loading-mask").hide();
+                $("#loading").hide();
+                $('#insertErrorModal').modal('show');
+            }*/});
+
+        return false;
+    }
+
+    function removeUser() {
+        var email = $("#email_remove").val();
+        var token = $("#token_remove").val();
+        if (email.length == 0) {
+            alert("Email is required!");
+            return false;
+        }
+        if (token.length == 0) {
+            alert("Token is required!");
+            return false;
+        }
+        var dataString = 'email=' + email + '&token=' + token;
+        $.ajax({
+            type: "POST",
+            url: "remove_user.php",
+            data: dataString,
+            success: function(data) {
+                //console.log(data);
+                if (data > 0) {
+                    $('#removemeModal').modal('hide');
+                    objects.clearLayers();
+                    getObjects();
+                    $('#removeSuccessModal').modal('show');
+                } else {
+                    alert("Incorrect email or token. Please try again.");
+                }
+            }
+        });
+        return false;
+    }
+
+    function onMapClick(e) {
+        var markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
+        var marker = new L.Marker(markerLocation);
+        newObject.clearLayers();
+        newObject.addLayer(marker);
+        var form = '<form id="inputform" enctype="multipart/form-data" class="well">' +
+            '<label><strong>Name:</strong> <i>marker title</i></label>' +
+            '<input type="text" class="span3" placeholder="Required" id="name" name="name" />' +
+            '<label><strong>Email:</strong> <i>never shared</i></label>' +
+            '<input type="text" class="span3" placeholder="Required" id="email" name="email" />' +
+            '<label><strong>City:</strong></label>' +
+            '<input type="text" class="span3" placeholder="Optional" id="city" name="city" />' +
+            '<label><strong>Website:</strong></label>' +
+            '<input type="text" class="span3" placeholder="Optional" id="website" name="website" value="http://" />' +
+            '<input style="display: none;" type="text" id="lat" name="lat" value="' + e.latlng.lat.toFixed(6) + '" />' +
+            '<input style="display: none;" type="text" id="lng" name="lng" value="' + e.latlng.lng.toFixed(6) + '" /><br><br>' +
+            '<div class="row-fluid">' +
+            '<div class="span6" style="text-align:center;"><button type="button" class="btn" onclick="cancelRegistration()">Cancel</button></div>' +
+            '<div class="span6" style="text-align:center;"><button type="button" class="btn btn-primary" onclick="insertUser()">Submit</button></div>' +
+            '</div>' +
+            '</form>';
+        marker.bindPopup(form).openPopup();
+        map.addLayer(newObject);
+    }
 </script>
