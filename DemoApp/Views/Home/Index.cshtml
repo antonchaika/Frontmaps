@@ -125,12 +125,17 @@
                 var marker = new L.Marker(location, {
                     title: name
                 }).addTo(map);
-                //marker.bindPopup("<div style='text-align: center; margin-left: auto; margin-right: auto;'>" + name + "</div>", { maxWidth: '400' });
+
+                marker.on('mouseover', function(evt) {
+                    evt.target.bindPopup("<div style='text-align: center; margin-left: auto; margin-right: auto;'>" + name + "</div>", { maxWidth: '400' }).openPopup();
+                });
+
                 //objects.addLayer(marker);
             }
 
             //map.addLayer(objects);
-        }).complete(function() {
+
+        }).complete(function () {
             if (firstLoad == true) {
                 //map.fitBounds(objects.getBounds());
                 firstLoad = false;
