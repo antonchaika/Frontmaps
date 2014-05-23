@@ -1,13 +1,6 @@
-﻿/*
-* MvcMaps Preview 1 - A Unified Mapping API for ASP.NET MVC
-* Copyright (c) 2009 Chris Pietschmann
-* http://mvcmaps.codeplex.com
-* Licensed under the Microsoft Reciprocal License (Ms-RL)
-* http://mvcmaps.codeplex.com/license
-*/
-using MvcMaps.Utils;
+﻿using FrontMaps.Utils;
 
-namespace MvcMaps
+namespace FrontMaps.Maps
 {
     public class DynamicMapOptions
     {

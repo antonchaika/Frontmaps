@@ -90,21 +90,9 @@
     <Compile Include="Geocoding\Geometry.cs" />
     <Compile Include="Geocoding\LocationType.cs" />
     <Compile Include="Geocoding\Viewport.cs" />
-    <Compile Include="Maps\BingMap.cs" />
-    <Compile Include="Maps\BingMapExtensions.cs" />
-    <Compile Include="Maps\BingMapMode.cs" />
-    <Compile Include="Maps\BingOrientation.cs" />
-    <Compile Include="Maps\BingPolygon.cs" />
-    <Compile Include="Maps\BingPolyline.cs" />
     <Compile Include="Maps\DynamicMapOptions.cs" />
-    <Compile Include="Maps\GoogleMap.cs" />
-    <Compile Include="Maps\GoogleMapExtensions.cs" />
-    <Compile Include="Maps\GooglePushpin.cs" />
-    <Compile Include="Maps\GooglePushpinShowEvents.cs" />
-    <Compile Include="Maps\IBingPoly.cs" />
     <Compile Include="Maps\IJsonRender.cs" />
     <Compile Include="Maps\IMap.cs" />
-    <Compile Include="Maps\LatLng.cs" />
     <Compile Include="Maps\Map.cs" />
     <Compile Include="Maps\MapDataResult.cs" />
     <Compile Include="Maps\MapType.cs" />
@@ -121,9 +109,11 @@
     <Compile Include="Models\ServiceResponseStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Http.cs" />
+    <Compile Include="Utils\JsonArrayBuilder.cs" />
     <Compile Include="Utils\JsonConverter.cs" />
     <Compile Include="Utils\LatLngConverter.cs" />
     <Compile Include="Utils\WebUtils.cs" />
+    <Compile Include="Utils\JsonObjectBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
@@ -131,8 +121,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Maps\BingMap.js" />
-    <Content Include="Maps\GoogleMap.js" />
     <Content Include="Maps\Map.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,20 +1,9 @@
-﻿/*
-* MvcMaps Preview 1 - A Unified Mapping API for ASP.NET MVC
-* Copyright (c) 2009 Chris Pietschmann
-* http://mvcmaps.codeplex.com
-* Licensed under the Microsoft Reciprocal License (Ms-RL)
-* http://mvcmaps.codeplex.com/license
-*/
-using MvcMaps.Utils;
-using System.Web;
-using System;
-using System.Drawing;
+﻿using System.Web;
+using FrontMaps.Models;
+using FrontMaps.Utils;
 
-namespace MvcMaps
+namespace FrontMaps.Maps
 {
-    /// <summary>
-    /// Allows you to easily specify a Pushpin to be displayed on the map.
-    /// </summary>
     public class Pushpin : IJsonRender
     {
         public Pushpin()
@@ -53,11 +42,6 @@ namespace MvcMaps
 
         public string ImageUrl { get; set; }
 
-        /// <summary>
-        /// The Size of the Image in Pixels. This is only used by Map Providers that require, all others will ignore this property.
-        /// </summary>
-        public Size ImageSize { get; set; }
-
         protected virtual JsonObjectBuilder ToJsonObjectBuilder()
         {
             //var json = new JsonObjectBuilder();
@@ -83,14 +67,6 @@ namespace MvcMaps
                     strImageUrl = VirtualPathUtility.ToAbsolute(this.ImageUrl, HttpContext.Current.Request.ApplicationPath);
                 }
                 json.Append("imageurl", "'" + strImageUrl + "'");
-            }
-
-            if (this.ImageSize != null)
-            {
-                var jsonImageSize = new JsonObjectBuilder();
-                jsonImageSize.Append("w", this.ImageSize.Width);
-                jsonImageSize.Append("h", this.ImageSize.Height);
-                json.Append("imagesize", jsonImageSize);
             }
 
             return json;

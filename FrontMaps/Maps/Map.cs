@@ -1,25 +1,17 @@
-﻿/*
-* MvcMaps Preview 1 - A Unified Mapping API for ASP.NET MVC
-* Copyright (c) 2009 Chris Pietschmann
-* http://mvcmaps.codeplex.com
-* Licensed under the Microsoft Reciprocal License (Ms-RL)
-* http://mvcmaps.codeplex.com/license
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using FrontMaps.Maps;
-using MvcMaps.Utils;
+using FrontMaps.Utils;
 
 [assembly: System.Web.UI.WebResource("MvcMaps.Map.js", "text/javascript")]
 
-namespace MvcMaps
+namespace FrontMaps.Maps
 {
-    public abstract class Map<T> : IMap where T: Map<T>
+    public class Map<T> : IMap where T: Map<T>
     {
         private string _javascriptObject;
 
@@ -35,7 +27,7 @@ namespace MvcMaps
             this.Polylines = new List<Polyline>();
             this.Polygons = new List<Polygon>();
 
-            this.ScriptInclude("map.js", WebUtils.GetWebResourceUrl<BingMap>("MvcMaps.Map.js"));
+            this.ScriptInclude("map.js", WebUtils.GetWebResourceUrl<IMap>("MvcMaps.Map.js"));
         }
 
         #endregion
@@ -128,7 +120,26 @@ namespace MvcMaps
         /// This method is called within the "RenderObjectInitializer" method.
         /// </summary>
         /// <returns></returns>
-        protected abstract object ResolveMapType();
+        protected object ResolveMapType()
+        {
+            var strMapType = "null";
+            switch (this._MapType)
+            {
+                case Maps.MapType.Road:
+                    strMapType = "G_NORMAL_MAP";
+                    break;
+                case Maps.MapType.Aerial:
+                    strMapType = "G_SATELLITE_MAP";
+                    break;
+                case Maps.MapType.Hybrid:
+                    strMapType = "G_HYBRID_MAP";
+                    break;
+                case Maps.MapType.Terrain:
+                    strMapType = "G_PHYSICAL_MAP";
+                    break;
+            }
+            return strMapType;
+        }
 
         #endregion
 

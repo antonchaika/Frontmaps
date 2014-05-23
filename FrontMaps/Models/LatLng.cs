@@ -1,12 +1,4 @@
-﻿/*
-* MvcMaps Preview 1 - A Unified Mapping API for ASP.NET MVC
-* Copyright (c) 2009 Chris Pietschmann
-* http://mvcmaps.codeplex.com
-* Licensed under the Microsoft Reciprocal License (Ms-RL)
-* http://mvcmaps.codeplex.com/license
-*/
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Data.SqlTypes;
 using FrontMaps.Utils;
@@ -45,6 +37,20 @@ namespace FrontMaps.Models
                 return true;
             }
             return false;
+        }
+
+
+        internal virtual JsonObjectBuilder ToJsonObjectBuilder()
+        {
+            var json = new JsonObjectBuilder();
+            json.Append("lat", this.Latitude);
+            json.Append("lng", this.Longitude);
+            return json;
+        }
+
+        public string Render()
+        {
+            return this.ToJsonObjectBuilder().Render();
         }
     }
 }
