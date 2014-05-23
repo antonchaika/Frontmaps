@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FrontMaps.Attributes.GeoAttribute" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\GeoAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Attributes.JsonValueAttribute" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Attributes\JsonValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Extensions.Configurator" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABgAAAAAAAAABAAAAAAAQAAAAAQAAAAAAE=</HashCode>
+      <FileName>Extensions\Configurator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Extensions.JsonValueAttributeExtensions" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\JsonValueAttributeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Filters.BoundsFilter" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAQAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Filters\BoundsFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Filters.BoundsFilterArgs" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filters\BoundsFilterArgs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FrontMaps.Filters.Filter" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filters\Filter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FrontMaps.Geocoding.AddressComponent" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAEAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geocoding\AddressComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.GeocodingRequest" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAiQAAAAAAAAAAAABAAAAAAAACAAAAAAAAAgA=</HashCode>
+      <FileName>Geocoding\GeocodingRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.GeocodingResponse" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geocoding\GeocodingResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.GeocodingResult" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Geocoding\GeocodingResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.GeocodingService" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geocoding\GeocodingService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.Geometry" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAIAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Geocoding\Geometry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Geocoding.Viewport" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geocoding\Viewport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Models.CollectionContext&lt;T&gt;" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAADAAAAAgAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CollectionContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Models.GeoActionResult" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\GeoActionResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Models.GeoEntity" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\GeoEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Models.LatLng" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LatLng.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Models.FrontMaps.Models.Coordinate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAEAAQBAMgCAIAAEACAAAAIBAAABIBAAAAAI=</HashCode>
+      <FileName>Models\Coordinate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FrontMaps.Models.FrontMaps.Models.CoordinateList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAEAAAAAAEAAAAAAAAAAABIAAAAAAA=</HashCode>
+      <FileName>Models\Coordinate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FrontMaps.Http" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Http.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Utils.JsonConverter" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\JsonConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Utils.LatLngConverter" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\LatLngConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontMaps.Utils.WebUtils" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAIAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\WebUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="FrontMaps.Filters.IFilter" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filters\IFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FrontMaps.Filters.IFilterArgs" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filters\IFilterArgs.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FrontMaps.Models.IGeoEntity" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IGeoEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="FrontMaps.Attributes.GeoType" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\GeoAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FrontMaps.Geocoding.AddressType" Collapsed="true">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACAACAA4AYFAIAABIgAYAAAAAAAAAAAKAARA=</HashCode>
+      <FileName>Geocoding\AddressType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FrontMaps.Geocoding.LocationType" Collapsed="true">
+    <Position X="9.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAACCAAABA=</HashCode>
+      <FileName>Geocoding\LocationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FrontMaps.ServiceResponseStatus" Collapsed="true">
+    <Position X="11" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAEAABAIAAABA=</HashCode>
+      <FileName>Models\ServiceResponseStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

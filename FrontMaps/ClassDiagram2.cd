@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FrontMaps.Maps.BingMap" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAAAgCAAAAAAACABAAAIAAAAAAAAAAAIIAABAAA=</HashCode>
+      <FileName>Maps\BingMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.BingMapExtensions" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\BingMapExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.BingPolygon" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAhAEAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Maps\BingPolygon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcMaps.BingPolyline" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAhAEAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Maps\BingPolyline.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcMaps.DynamicMapOptions" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAggAAAAAAAAAAAAAAAAAAAAEAAAQAACBAAAAAAACA=</HashCode>
+      <FileName>Maps\DynamicMapOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.GoogleMap" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Maps\GoogleMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.GoogleMapExtensions" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\GoogleMapExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.GooglePushpin" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAICA=</HashCode>
+      <FileName>Maps\GooglePushpin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.LatLng" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAABAAAAAAACA=</HashCode>
+      <FileName>Maps\LatLng.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.Map&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBSAhAAABYCAABCMEAFCAAAAaBCAgAABSRAqgCJsAAA=</HashCode>
+      <FileName>Maps\Map.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcMaps.MapDataResult" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Maps\MapDataResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcMaps.Polygon" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQDAAAAAAAAAgAAAAAAAAAAAAAAIAAAAABAAAAgAACA=</HashCode>
+      <FileName>Maps\Polygon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcMaps.Polyline" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQBAAAAAAAAAgAAAAAAAAAAAAAAIAAAAABAAAAAAACA=</HashCode>
+      <FileName>Maps\Polyline.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcMaps.Pushpin" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAEAgAAAAAAAAAAAAACAAABAAAAAAACA=</HashCode>
+      <FileName>Maps\Pushpin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MvcMaps.IBingPoly" Collapsed="true">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAhAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Maps\IBingPoly.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MvcMaps.IJsonRender" Collapsed="true">
+    <Position X="14" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Maps\IJsonRender.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MvcMaps.IMap" Collapsed="true">
+    <Position X="15.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACBAAgAAAABAAAAAAAAA=</HashCode>
+      <FileName>Maps\IMap.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MvcMaps.BingMapMode" Collapsed="true">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Maps\BingMapMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MvcMaps.BingOrientation" Collapsed="true">
+    <Position X="14" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAQ=</HashCode>
+      <FileName>Maps\BingOrientation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MvcMaps.GooglePushpinShowEvents" Collapsed="true">
+    <Position X="15.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Maps\GooglePushpinShowEvents.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MvcMaps.MapType" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAIEAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Maps\MapType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
